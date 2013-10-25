@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using CiviKey.WebApi.Core.Configuration;
-using Nancy;
 using Semver;
 
 namespace CiviKey.WebApi.Update
@@ -13,10 +12,9 @@ namespace CiviKey.WebApi.Update
     {
         DirectoryInfo _installersDirectory;
 
-        public UpdateService( IConfiguration config, IRootPathProvider rootPathProvider )
+        public UpdateService( IConfiguration config )
         {
-            _installersDirectory = new DirectoryInfo( Path.Combine( rootPathProvider.GetRootPath(), config.Settings.UpdatesDirectory ) );
-
+            _installersDirectory = new DirectoryInfo( Path.Combine( config.GetRootPath(), config.Settings.UpdatesDirectory ) );
             if( !_installersDirectory.Exists ) _installersDirectory.Create();
         }
 

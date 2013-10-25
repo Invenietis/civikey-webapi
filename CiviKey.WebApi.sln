@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiviKey.WebApi.Web", "CiviKey.WebApi.Web\CiviKey.WebApi.Web.csproj", "{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiviKey.WebApi.Crash", "CiviKey.WebApi.Crash\CiviKey.WebApi.Crash.csproj", "{3F1597B5-A281-4C7B-AE95-1BEE8E343160}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiviKey.WebApi.Core", "CiviKey.WebApi.Core\CiviKey.WebApi.Core.csproj", "{A5100726-002A-4398-859D-41116DE9A15F}"
@@ -23,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4F9C525-5C56-440E-B4C2-972A33D7C8CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3F1597B5-A281-4C7B-AE95-1BEE8E343160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F1597B5-A281-4C7B-AE95-1BEE8E343160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F1597B5-A281-4C7B-AE95-1BEE8E343160}.Release|Any CPU.ActiveCfg = Release|Any CPU

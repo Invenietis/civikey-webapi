@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CiviKey.WebApi.Core;
 using CiviKey.WebApi.Core.Configuration;
-using Nancy;
 
 namespace CiviKey.WebApi.Crash
 {
@@ -15,9 +14,9 @@ namespace CiviKey.WebApi.Crash
     {
         DirectoryInfo _crashDirectory;
 
-        public CrashService( IConfiguration config, IRootPathProvider pathProvider )
+        public CrashService( IConfiguration config )
         {
-            _crashDirectory = new DirectoryInfo( Path.Combine( pathProvider.GetRootPath(), config.Settings.CrashStorageDirectory ) );
+            _crashDirectory = new DirectoryInfo( Path.Combine( config.GetRootPath(), config.Settings.CrashStorageDirectory ) );
             if( !_crashDirectory.Exists ) _crashDirectory.Create();
         }
 
@@ -30,16 +29,16 @@ namespace CiviKey.WebApi.Crash
             return WriteStream( Path.Combine( todayDirectory.FullName, DateTime.UtcNow.ToString( "u" ).Replace( ":", "-" ) + ".log" ), crashLogContent );
         }
 
-        public FileInfo RegisterCrash( string applicationId, HttpFile file )
+        public FileInfo RegisterCrash( string applicationId, Stream crashLogContent, string filename )
         {
-            string parsableDate = Regex.Replace( file.Name, "[a-z]|[A-Z]|-|\\.", string.Empty );
+            string parsableDate = Regex.Replace( filename, "[a-z]|[A-Z]|-|\\.", string.Empty );
             DateTime date = DateTime.ParseExact( parsableDate, "yyyyMMdd HHmmss", null );
 
             DirectoryInfo crashLogDirectory = _crashDirectory
                                                 .CreateSubdirectory( applicationId )
                                                 .CreateSubdirectory( date.ToString( "yyyy-MM-dd" ) );
 
-            return WriteStream( Path.Combine( crashLogDirectory.FullName, file.Name ), file.Value );
+            return WriteStream( Path.Combine( crashLogDirectory.FullName, filename ), crashLogContent );
         }
 
         FileInfo WriteStream( string path, Stream content )

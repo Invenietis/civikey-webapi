@@ -10,5 +10,7 @@ namespace CiviKey.WebApi.Core.Configuration
     public interface IConfiguration
     {
         dynamic Settings { get; }
+
+        string GetRootPath();
     }
 }
