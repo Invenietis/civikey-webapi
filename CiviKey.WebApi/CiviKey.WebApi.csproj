@@ -48,8 +48,47 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CK.Core.2.8.14\lib\net45\CK.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CK.Core.Web">
+      <HintPath>..\packages\CK.Core.Web.2.0.6\lib\net40-Client\CK.Core.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.Database">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.Dependency">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.Dependency.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.SqlServer">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.StObj">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.StObj.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.SqlServer">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.TaskHost">
+      <HintPath>..\packages\CK.TaskHost.1.5.1\lib\net40\CK.TaskHost.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.TaskHost.Unity">
+      <HintPath>..\packages\CK.TaskHost.Unity.1.5.1\lib\net40\CK.TaskHost.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Toolkit">
+      <HintPath>..\packages\CK.Toolkit.0.11.1\lib\net45\CK.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Toolkit.Web">
+      <HintPath>..\packages\CK.Toolkit.Web.0.11.1\lib\net45\CK.Toolkit.Web.dll</HintPath>
+    </Reference>
     <Reference Include="CK.Toolkit.Web.Http">
       <HintPath>..\packages\CK.Toolkit.Web.Http.0.11.1\lib\net45\CK.Toolkit.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Web">
+      <HintPath>..\packages\CK.Web.2.0.6\lib\net40\CK.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
@@ -64,6 +103,12 @@
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.3.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -74,6 +119,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -108,6 +157,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Views\Email\CrashReport.cshtml" />
+    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -129,6 +180,7 @@
       <Name>CiviKey.WebApi.Update</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

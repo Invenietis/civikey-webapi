@@ -19,18 +19,6 @@ namespace CiviKey.WebApi.Tests
     [TestFixture]
     public class CrashTests
     {
-        //void SetupControllerForPostAction<T>( T controller, dynamic routeValues ) where T : ApiController
-        //{
-        //    var config = new HttpConfiguration();
-        //    var request = new HttpRequestMessage( HttpMethod.Post, "http://localhost/api/" + routeValues.action );
-        //    var route = config.Routes.MapHttpRoute( "Route", "api/{controller}/{action}" );
-        //    var routeData = new HttpRouteData( route, new HttpRouteValueDictionary( routeValues ) );
-
-        //    controller.ControllerContext = new HttpControllerContext( config, routeData, request );
-        //    controller.Request = request;
-        //    controller.Request.Properties[HttpPropertyKeys.HttpConfigurationKey] = config;
-        //}
-
         [Test]
         public void CreateCrash()
         {
@@ -64,43 +52,5 @@ namespace CiviKey.WebApi.Tests
             Assert.That( crashFile.Directory.Name, Is.EqualTo( "2009-01-01" ) );
             Assert.That( crashFile.Directory.Parent.Name, Is.EqualTo( "unittests" ) );
         }
-
-        //[Test]
-        //public void CreateCrashWithFile()
-        //{
-        //    // Given
-        //    TestConfiguration config = new TestConfiguration();
-        //    config.Settings.CrashStorageDirectory = "CrashDirectory";
-
-        //    CrashService svc = new CrashService( config );
-
-        //    CrashController ctrl = new CrashController( svc );
-        //    SetupControllerForPostAction( ctrl, new { action = "Post", civiKeyInstanceIdentifier = "unittest" } );
-
-
-        //    // When
-        //    MemoryStream ms = new MemoryStream();
-        //    using( TextWriter tx = new StreamWriter( ms, Encoding.Unicode, 128, true ) )
-        //    {
-        //        for( int i = 0; i < 100; i++ )
-        //            tx.WriteLine( "line {0}", i );
-
-        //        using( var formData = new MultipartFormDataContent() )
-        //        {
-        //            ms.Seek( 0, SeekOrigin.Begin );
-        //            formData.Add( new StreamContent( ms ), "file", "crashLog-2013-10-24 10-17-42Z.log" );
-        //            ctrl.Request.Content = formData;
-
-        //            var response = ctrl.Post( "unittest" );
-        //            Assert.That( response.Result, Is.EqualTo( HttpStatusCode.Created ) );
-
-        //            Thread.Sleep( 5000 );
-        //        }
-        //    }
-
-        //// Then
-        //Assert.That( crashFile, Is.Not.Null );
-        //Assert.That( crashFile.Exists, Is.True );
-        //}
     }
 }

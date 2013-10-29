@@ -1,39 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="CK.Authentication 2.3.0" Category="Package" Bounds="-87.43,174.88,142.756666666667,25.96" Label="CK.Authentication 2.3.0" UseManualLocation="True" />
-    <Node Id="CK.Authentication.Web 2.3.0" Category="Package" Bounds="-5.6843418860808E-14,111.92,169.896666666667,25.96" Label="CK.Authentication.Web 2.3.0" />
-    <Node Id="CK.Core 2.7.43" Category="Package" Bounds="129.815,176.88,96.2666666666666,25.96" Label="CK.Core 2.7.43" UseManualLocation="True" />
-    <Node Id="CK.Toolkit.Web.Http 0.11.1" Category="Package" Bounds="170.451666666667,55.9600000000002,160.993333333333,25.96" Label="CK.Toolkit.Web.Http 0.11.1" />
-    <Node Id="CiviKey.WebApi" Category="Project" Bounds="402.511666666667,0,102.873333333333,25.96" Label="CiviKey.WebApi" />
-    <Node Id="CiviKey.WebApi.Core" Category="Project" Bounds="864.756666666667,111.92,130.383333333333,25.96" Label="CiviKey.WebApi.Core" />
-    <Node Id="CiviKey.WebApi.Crash" Category="Project" Bounds="699.415,111.92,135.066666666667,25.96" Label="CiviKey.WebApi.Crash" />
-    <Node Id="Microsoft.AspNet.WebApi 5.0.0" Category="Package" Bounds="361.488333333333,55.96,184.92,25.96" Label="Microsoft.AspNet.WebApi 5.0.0" />
-    <Node Id="Microsoft.AspNet.WebApi.Client 5.0.0" Category="Package" Bounds="477,223.84,217.896666666667,25.96" Label="Microsoft.AspNet.WebApi.Client 5.0.0" />
-    <Node Id="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Package" Bounds="479.733333333333,167.88,212.43,25.96" Label="Microsoft.AspNet.WebApi.Core 5.0.0" />
-    <Node Id="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="Package" Bounds="335.563333333333,111.92,236.77,25.96" Label="Microsoft.AspNet.WebApi.WebHost 5.0.0" />
-    <Node Id="Microsoft.Owin 2.0.0" Category="Package" Bounds="576.803333333333,55.96,128.29,25.96" Label="Microsoft.Owin 2.0.0" />
-    <Node Id="Nancy 0.20.0" Category="Package" Bounds="723.153333333333,167.88,87.59,25.96" Label="Nancy 0.20.0" />
-    <Node Id="Newtonsoft.Json 5.0.8" Category="Package" Bounds="518.221666666667,279.8,135.453333333333,25.96" Label="Newtonsoft.Json 5.0.8" />
-    <Node Id="Owin 1.0" Category="Package" Bounds="602.826666666667,111.92,66.2433333333333,25.96" Label="Owin 1.0" />
-    <Node Id="Unity 3.0.1304.1" Category="Package" Bounds="200.853333333333,111.92,104.19,25.96" Label="Unity 3.0.1304.1" />
+    <Node Id="CK-Database 1.3.1" Category="Package" Bounds="932.966643066406,146.230007863655,116.31,25.96" Label="CK-Database 1.3.1" />
+    <Node Id="CK.Authentication 2.3.0" Category="Package" Bounds="289.743340250651,242.911349544335,142.756666666667,25.96" Label="CK.Authentication 2.3.0" />
+    <Node Id="CK.Authentication.Web 2.3.0" Category="Package" Bounds="270.10795888265,186.951251525879,169.896666666667,25.96" Label="CK.Authentication.Web 2.3.0" />
+    <Node Id="CK.Core 2.8.14" Category="Package" Bounds="843.58551449472,257.015016962536,96.2666666666667,25.96" Label="CK.Core 2.8.14" UseManualLocation="True" />
+    <Node Id="CK.Core.Web 2.0.6" Category="Package" Bounds="547.560633711789,214.922165940463,116.936666666667,25.96" Label="CK.Core.Web 2.0.6" UseManualLocation="True" />
+    <Node Id="CK.TaskHost 1.5.1" Category="Package" Bounds="789.598340250651,146.230007863655,113.046666666667,25.96" Label="CK.TaskHost 1.5.1" />
+    <Node Id="CK.TaskHost.Unity 1.5.1" Category="Package" Bounds="699.391673583984,90.2699078636549,143.46,25.96" Label="CK.TaskHost.Unity 1.5.1" />
+    <Node Id="CK.Toolkit 0.11.1" Category="Package" Bounds="1023.80421820226,-166.554906051418,107.546666666667,25.96" Label="CK.Toolkit 0.11.1" UseManualLocation="True" />
+    <Node Id="CK.Toolkit.Web 0.11.1" Category="Package" Bounds="364.778333333333,55.96,134.686666666667,25.96" Label="CK.Toolkit.Web 0.11.1" />
+    <Node Id="CK.Toolkit.Web.Http 0.11.1" Category="Package" Bounds="465.664564668158,381.45891361384,160.993333333333,25.96" Label="CK.Toolkit.Web.Http 0.11.1" UseManualLocation="True" />
+    <Node Id="CK.Web 2.0.6" Category="Package" Bounds="579.408333333333,111.92,89.4266666666667,25.96" Label="CK.Web 2.0.6" />
+    <Node Id="CiviKey.WebApi" Category="Project" Bounds="430.269988825188,-94.0843377708684,102.873333333333,25.96" Label="CiviKey.WebApi" UseManualLocation="True" />
+    <Node Id="CiviKey.WebApi.Core" Category="Project" Bounds="0,335.76,130.383333333333,25.96" Label="CiviKey.WebApi.Core" />
+    <Node Id="CiviKey.WebApi.Crash" Category="Project" Bounds="1242.58833333333,55.9599999999999,135.066666666667,25.96" Label="CiviKey.WebApi.Crash" />
+    <Node Id="CiviKey.WebApi.Update" Category="Project" Bounds="1648.97833333333,111.92,144.286666666667,25.96" Label="CiviKey.WebApi.Update" />
+    <Node Id="Common.Logging 2.1.2" Category="Package" Bounds="1079.60833333333,167.88,143.026666666667,25.96" Label="Common.Logging 2.1.2" />
+    <Node Id="Microsoft.AspNet.Razor 3.0.0" Category="Package" Bounds="48.2029464275417,167.880051068115,172.593333333333,25.96" Label="Microsoft.AspNet.Razor 3.0.0" />
+    <Node Id="Microsoft.AspNet.WebApi 5.0.0" Category="Package" Bounds="1407.66166666667,55.9599999999999,184.92,25.96" Label="Microsoft.AspNet.WebApi 5.0.0" />
+    <Node Id="Microsoft.AspNet.WebApi.Client 5.0.0" Category="Package" Bounds="1391.17333333333,223.84,217.896666666667,25.96" Label="Microsoft.AspNet.WebApi.Client 5.0.0" />
+    <Node Id="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Package" Bounds="1393.90666666667,167.88,212.43,25.96" Label="Microsoft.AspNet.WebApi.Core 5.0.0" />
+    <Node Id="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="Package" Bounds="1381.73666666667,111.92,236.77,25.96" Label="Microsoft.AspNet.WebApi.WebHost 5.0.0" />
+    <Node Id="Microsoft.Owin 2.0.1" Category="Package" Bounds="104.472019370259,-3.21354326662795,128.29,25.96" Label="Microsoft.Owin 2.0.1" UseManualLocation="True" />
+    <Node Id="NLog 2.0.1.2" Category="Package" Bounds="463.276666666667,111.92,85.6900000000001,25.96" Label="NLog 2.0.1.2" />
+    <Node Id="NUnit 2.6.3" Category="Package" Bounds="1113.4560946611,407.092196184241,78.8799999999999,25.96" Label="NUnit 2.6.3" UseManualLocation="True" />
+    <Node Id="Nancy 0.21.1" Category="Package" Bounds="21.3966666666667,391.72,87.59,25.96" Label="Nancy 0.21.1" />
+    <Node Id="Newtonsoft.Json 5.0.8" Category="Package" Bounds="1432.395,279.8,135.453333333333,25.96" Label="Newtonsoft.Json 5.0.8" />
+    <Node Id="Owin 1.0" Category="Package" Bounds="0,111.92,66.2433333333333,25.96" Label="Owin 1.0" />
+    <Node Id="RazorEngine 3.3.0" Category="Package" Bounds="96.2666666666667,111.92,113.71,25.96" Label="RazorEngine 3.3.0" />
+    <Node Id="Unity 3.0.1304.1" Category="Package" Bounds="864.263764314053,527.689121477494,104.19,25.96" Label="Unity 3.0.1304.1" UseManualLocation="True" />
+    <Node Id="_Tests\CiviKey.WebApi.Tests" Category="Project" Bounds="1097.32783442843,322.174930330359,132.29,25.96" Label="CiviKey.WebApi.Tests" UseManualLocation="True" />
+    <Node Id="semver 1.0.5" Category="Package" Bounds="1678.22166666667,167.88,85.8,25.96" Label="semver 1.0.5" />
   </Nodes>
   <Links>
-    <Link Source="CK.Authentication.Web 2.3.0" Target="CK.Authentication 2.3.0" Category="Package Dependency" Bounds="12.4083481331477,137.880001525879,51.7175580808148,32.2389838092605" />
-    <Link Source="CK.Authentication.Web 2.3.0" Target="CK.Core 2.7.43" Category="Package Dependency" Bounds="103.531154292475,137.880001525879,48.4560568156413,33.846294522345" />
-    <Link Source="CK.Toolkit.Web.Http 0.11.1" Target="CK.Authentication.Web 2.3.0" Category="Package Dependency" Bounds="131.980712890625,81.9199981689453,80.4636840820313,27.1249923706055" />
-    <Link Source="CK.Toolkit.Web.Http 0.11.1" Target="Unity 3.0.1304.1" Category="Package Dependency" Bounds="251.412231445313,81.9199981689453,0.750747680664063,21.005744934082" />
-    <Link Source="CiviKey.WebApi" Target="CK.Toolkit.Web.Http 0.11.1" Category="Installed Package" Bounds="306.710845947266,25.9599990844727,100.1513671875,27.6082305908203" />
-    <Link Source="CiviKey.WebApi" Target="Microsoft.AspNet.WebApi 5.0.0" Category="Installed Package" Bounds="453.948333740234,25.9599990844727,0,21" />
-    <Link Source="CiviKey.WebApi" Target="Microsoft.Owin 2.0.0" Category="Installed Package" Bounds="497.3232421875,25.9599990844727,91.6279907226563,27.419792175293" />
-    <Link Source="CiviKey.WebApi.Core" Target="Nancy 0.20.0" Category="Installed Package" Bounds="813.268737792969,137.880004882813,78.8715209960938,27.0776062011719" />
-    <Link Source="CiviKey.WebApi.Crash" Target="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Installed Package" Bounds="636.529968261719,137.880004882813,88.4351806640625,27.3416137695313" />
-    <Link Source="CiviKey.WebApi.Crash" Target="Nancy 0.20.0" Category="Installed Package" Bounds="766.948303222656,137.880004882813,0,21" />
-    <Link Source="Microsoft.AspNet.WebApi 5.0.0" Target="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="Package Dependency" Bounds="453.948333740234,81.9199981689453,0,21" />
-    <Link Source="Microsoft.AspNet.WebApi.Client 5.0.0" Target="Newtonsoft.Json 5.0.8" Category="Package Dependency" Bounds="585.948303222656,249.800003051758,0,20.9999847412109" />
-    <Link Source="Microsoft.AspNet.WebApi.Core 5.0.0" Target="Microsoft.AspNet.WebApi.Client 5.0.0" Category="Package Dependency" Bounds="585.948303222656,193.839996337891,0,21" />
-    <Link Source="Microsoft.AspNet.WebApi.WebHost 5.0.0" Target="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Package Dependency" Bounds="484.56591796875,137.880004882813,62.4786987304688,26.4871673583984" />
-    <Link Source="Microsoft.Owin 2.0.0" Target="Owin 1.0" Category="Package Dependency" Bounds="637.909057617188,81.9199981689453,1.8795166015625,21.0357131958008" />
+    <Link Source="CK-Database 1.3.1" Target="CK.Core 2.8.14" Category="Package Dependency" Bounds="909.375788457137,172.190006713867,70.0994119716805,78.1262381939089" />
+    <Link Source="CK.Authentication.Web 2.3.0" Target="CK.Authentication 2.3.0" Category="Package Dependency" Bounds="356.46316359986,212.911251525879,2.28182993088359,21.0524948067715" />
+    <Link Source="CK.Authentication.Web 2.3.0" Target="CK.Core 2.8.14" Category="Package Dependency" Bounds="439.801972792554,210.99518858162,394.859275205736,51.5506960653358" />
+    <Link Source="CK.TaskHost 1.5.1" Target="CK.Core 2.8.14" Category="Package Dependency" Bounds="851.464014757755,172.190006713867,31.4870401086928,76.5023736442504" />
+    <Link Source="CK.TaskHost.Unity 1.5.1" Target="CK.TaskHost 1.5.1" Category="Package Dependency" Bounds="788.517997035872,116.229907863655,32.9939918272461,24.617961094025" />
+    <Link Source="CK.TaskHost.Unity 1.5.1" Target="Unity 3.0.1304.1" Category="Package Dependency" Bounds="775.431446918354,116.229904632568,133.781531952764,402.917775489211" />
+    <Link Source="CK.Toolkit 0.11.1" Target="CK-Database 1.3.1" Category="Package Dependency" Bounds="997.107126420181,-140.594905395508,76.8826269079129,278.150191208728" />
+    <Link Source="CK.Toolkit 0.11.1" Target="CK.TaskHost 1.5.1" Category="Package Dependency" Bounds="861.080178758313,-140.594905395508,206.892343127667,279.590279785894" />
+    <Link Source="CK.Toolkit 0.11.1" Target="Common.Logging 2.1.2" Category="Package Dependency" Bounds="1080.43189010304,-140.594905395508,65.9024124439266,299.684931827392" />
+    <Link Source="CK.Toolkit 0.11.1" Target="Unity 3.0.1304.1" Category="Package Dependency" Bounds="925.374633789063,-140.594909667969,151.8662109375,659.997985839844" />
+    <Link Source="CK.Toolkit.Web 0.11.1" Target="CK.Authentication.Web 2.3.0" Category="Package Dependency" Bounds="367.25643765693,81.919998626709,57.2287546396792,97.2741470633243" />
+    <Link Source="CK.Toolkit.Web 0.11.1" Target="CK.Toolkit 0.11.1" Category="Package Dependency" Bounds="469.773130951902,-137.661650028549,561.644311148935,193.621648655258" />
+    <Link Source="CK.Toolkit.Web 0.11.1" Target="CK.Web 2.0.6" Category="Package Dependency" Bounds="476.65626974103,81.919950076294,95.6310299633743,27.8724862339959" />
+    <Link Source="CK.Toolkit.Web 0.11.1" Target="NLog 2.0.1.2" Category="Package Dependency" Bounds="449.286022617518,81.919950076294,32.4927508091725,24.5715788471797" />
+    <Link Source="CK.Toolkit.Web 0.11.1" Target="RazorEngine 3.3.0" Category="Package Dependency" Bounds="218.475758562444,81.9051749779128,149.005175504585,29.8865164356526" />
+    <Link Source="CK.Toolkit.Web.Http 0.11.1" Target="CK.Authentication.Web 2.3.0" Category="Package Dependency" Bounds="398.092071533203,216.071716308594,139.756866455078,165.38720703125" />
+    <Link Source="CK.Toolkit.Web.Http 0.11.1" Target="Unity 3.0.1304.1" Category="Package Dependency" Bounds="579.0214952897,407.418919067383,296.10637042705,116.963755319545" />
+    <Link Source="CK.Web 2.0.6" Target="CK.Core 2.8.14" Category="Package Dependency" Bounds="648.060519997175,137.880001525879,211.807638246836,114.845117939106" />
+    <Link Source="CK.Web 2.0.6" Target="CK.Core.Web 2.0.6" Category="Package Dependency" Bounds="609.865960910945,137.880001525879,11.975697040615,68.1778782567578" />
+    <Link Source="CK.Web 2.0.6" Target="Unity 3.0.1304.1" Category="Package Dependency" Bounds="633.245066886214,137.880001525879,268.814905195663,382.446057352302" />
+    <Link Source="CiviKey.WebApi" Target="CK.TaskHost.Unity 1.5.1" Category="Installed Package" Bounds="502.083766893581,-68.1243377708685,241.06999347445,153.558983587494" />
+    <Link Source="CiviKey.WebApi" Target="CK.Toolkit.Web 0.11.1" Category="Installed Package" Bounds="439.235143218962,-68.1243377708684,38.1820237341386,115.538872196897" />
+    <Link Source="CiviKey.WebApi" Target="CK.Toolkit.Web.Http 0.11.1" Category="Installed Package" Bounds="483.465943744758,-68.1243357849121,59.7271899542632,440.664801481116" />
+    <Link Source="CiviKey.WebApi" Target="Microsoft.AspNet.WebApi 5.0.0" Category="Installed Package" Bounds="533.14331644694,-73.5261169364441,869.973539368442,128.174127542811" />
+    <Link Source="CiviKey.WebApi" Target="Microsoft.Owin 2.0.1" Category="Installed Package" Bounds="221.98211041413,-68.1243377708684,215.002767778896,62.4021694648345" />
+    <Link Source="CiviKey.WebApi.Core" Target="Nancy 0.21.1" Category="Installed Package" Bounds="65.1916656494141,361.720001220703,0,21" />
+    <Link Source="CiviKey.WebApi.Crash" Target="CK.Toolkit 0.11.1" Category="Installed Package" Bounds="1097.64520796166,-134.372716507082,198.911445784493,190.33254566968" />
+    <Link Source="CiviKey.WebApi.Crash" Target="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Installed Package" Bounds="1320.21374511719,81.9198303222656,120.400024414063,83.7316589355469" />
+    <Link Source="CiviKey.WebApi.Update" Target="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Installed Package" Bounds="1560.10754394531,137.880004882813,109.752807617188,27.7908020019531" />
+    <Link Source="CiviKey.WebApi.Update" Target="semver 1.0.5" Category="Installed Package" Bounds="1721.12170410156,137.880004882813,0,21" />
+    <Link Source="Microsoft.AspNet.WebApi 5.0.0" Target="Microsoft.AspNet.WebApi.WebHost 5.0.0" Category="Package Dependency" Bounds="1500.12170410156,81.9199981689453,0,21" />
+    <Link Source="Microsoft.AspNet.WebApi.Client 5.0.0" Target="Newtonsoft.Json 5.0.8" Category="Package Dependency" Bounds="1500.12170410156,249.800003051758,0,20.9999847412109" />
+    <Link Source="Microsoft.AspNet.WebApi.Core 5.0.0" Target="Microsoft.AspNet.WebApi.Client 5.0.0" Category="Package Dependency" Bounds="1500.12170410156,193.839996337891,0,21" />
+    <Link Source="Microsoft.AspNet.WebApi.WebHost 5.0.0" Target="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Package Dependency" Bounds="1500.12170410156,137.880004882813,0,21" />
+    <Link Source="Microsoft.Owin 2.0.1" Target="Owin 1.0" Category="Package Dependency" Bounds="55.2556277485681,22.7464564847946,98.0858258525806,83.3457625910133" />
+    <Link Source="RazorEngine 3.3.0" Target="Microsoft.AspNet.Razor 3.0.0" Category="Package Dependency" Bounds="141.660772962574,137.880001525879,7.14148862856149,21.4604683270262" />
+    <Link Source="_Tests\CiviKey.WebApi.Tests" Target="CK.Core 2.8.14" Category="Installed Package" Bounds="948.21981306155,283.542548003758,161.119071957862,38.6323744815934" />
+    <Link Source="_Tests\CiviKey.WebApi.Tests" Target="Microsoft.AspNet.WebApi.Core 5.0.0" Category="Installed Package" Bounds="1189.56127929688,196.919311523438,255.044677734375,125.255615234375" />
+    <Link Source="_Tests\CiviKey.WebApi.Tests" Target="NUnit 2.6.3" Category="Installed Package" Bounds="1155.62517348544,348.134922485352,6.23100711854272,50.0262773220671" />
   </Links>
   <Categories>
     <Category Id="Installed Package" />

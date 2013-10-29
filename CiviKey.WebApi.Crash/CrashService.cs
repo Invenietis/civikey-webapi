@@ -41,6 +41,24 @@ namespace CiviKey.WebApi.Crash
             return WriteStream( Path.Combine( crashLogDirectory.FullName, filename ), crashLogContent );
         }
 
+        public IEnumerable<FileInfo> GetCrashsSince( DateTime date )
+        {
+            foreach( var appCrashDir in _crashDirectory.EnumerateDirectories() )
+            {
+                foreach( var dateCrashDir in appCrashDir.EnumerateDirectories() )
+                {
+                    DateTime crashDate = DateTime.ParseExact( dateCrashDir.Name, "yyyy-MM-dd", null );
+                    if( crashDate > date)
+                    {
+                        foreach( var crash in dateCrashDir.EnumerateFiles() )
+                        {
+                            yield return crash;
+                        }
+                    }
+                }
+            }
+        }
+
         FileInfo WriteStream( string path, Stream content )
         {
             FileInfo file = new FileInfo( path );

@@ -31,8 +31,65 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CK.Authentication">
+      <HintPath>..\packages\CK.Authentication.2.3.0\lib\net40-Client\CK.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Authentication.Web">
+      <HintPath>..\packages\CK.Authentication.Web.2.3.0\lib\net40\CK.Authentication.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Core">
+      <HintPath>..\packages\CK.Core.2.8.14\lib\net45\CK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Core.Web">
+      <HintPath>..\packages\CK.Core.Web.2.0.6\lib\net40-Client\CK.Core.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.Database">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.Dependency">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.Dependency.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.SqlServer">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Setup.StObj">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.Setup.StObj.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.SqlServer">
+      <HintPath>..\packages\CK-Database.1.3.1\lib\net45\CK.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.TaskHost">
+      <HintPath>..\packages\CK.TaskHost.1.5.1\lib\net40\CK.TaskHost.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Toolkit">
+      <HintPath>..\packages\CK.Toolkit.0.11.1\lib\net45\CK.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Toolkit.Web">
+      <HintPath>..\packages\CK.Toolkit.Web.0.11.1\lib\net45\CK.Toolkit.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.Web">
+      <HintPath>..\packages\CK.Web.2.0.6\lib\net40\CK.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.3.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +102,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,7 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrashController.cs" />
+    <Compile Include="CrashReportModel.cs" />
     <Compile Include="CrashService.cs" />
+    <Compile Include="CrashTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +128,7 @@
       <Name>CiviKey.WebApi.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

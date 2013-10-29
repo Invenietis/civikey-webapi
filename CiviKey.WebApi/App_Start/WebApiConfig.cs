@@ -11,15 +11,9 @@ namespace CiviKey.WebApi
 {
     public static class WebApiConfig
     {
-        public static void Register( HttpConfiguration config )
+        public static void Register( HttpConfiguration config, IUnityContainer container )
         {
             // Web API configuration and services
-            IUnityContainer container = new UnityContainer();
-
-            container.RegisterInstance<IUnityContainer>( container );
-            container.RegisterType<IHttpControllerActivator, UnityHttpControllerActivator>( new ContainerControlledLifetimeManager() );
-            container.RegisterType<IConfiguration, WebConfiguration>( new ContainerControlledLifetimeManager() );
-            
             config.DependencyResolver = new ApiUnityDependencyResolver( container );
 
             // Web API routes
