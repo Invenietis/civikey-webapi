@@ -32,16 +32,17 @@ namespace CiviKey.WebApi.Crash
             if( DataBag.LastRun != null )
             {
                 IEnumerable<FileInfo> crashLogs = _crashService.GetCrashsSince( DataBag.LastRun );
+
+                string rawRecipients = _config.Settings.CrashReportsRecipents;
+
+                RecipientModel recipientModel = new RecipientModel();
+                foreach( var r in rawRecipients.Split( ';' ).Where( r => r.Length > 0 ).Select( ParseRecipient ) )
+                    recipientModel.Recipients.Add( r );
+
                 if( crashLogs.Any() )
-                {
-                    string rawRecipients = _config.Settings.CrashReportsRecipents;
-
-                    RecipientModel recipientModel = new RecipientModel();
-                    foreach( var r in rawRecipients.Split( ';' ).Select( ParseRecipient ) )
-                        recipientModel.Recipients.Add( r );
-
                     _mailer.SendMail( new CrashReportModel( crashLogs, DataBag.LastRun ), new RazorMailTemplateKey( "CrashReport" ), recipientModel );
-                }
+                else
+                    _mailer.SendMail( new CrashReportModel( DataBag.LastRun ), new RazorMailTemplateKey( "CrashReportEmpty" ), recipientModel );
             }
 
             DataBag.LastRun = DateTime.Today;

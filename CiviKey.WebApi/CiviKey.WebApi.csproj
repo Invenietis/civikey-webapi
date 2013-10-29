@@ -159,6 +159,7 @@
     <Content Include="packages.config" />
     <Content Include="Views\Email\CrashReport.cshtml" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\Email\CrashReportEmpty.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
