@@ -27,17 +27,22 @@ namespace CiviKey.WebApi.Crash
             if( Request.Content.IsMimeMultipartContent() )
             {
                 var multipart = await Request.Content.ReadAsMultipartAsync();
-                foreach( var c in multipart.Contents )
+                if( multipart.Contents.Any() )
                 {
-                    string filename = c.Headers.ContentDisposition.FileName;
-                    if( string.IsNullOrEmpty( filename ) ) throw new ArgumentException();
+                    foreach( var c in multipart.Contents )
+                    {
+                        string filename = c.Headers.ContentDisposition.FileName;
+                        if( string.IsNullOrEmpty( filename ) ) throw new ArgumentException();
 
-                    _crashService.RegisterCrash( civiKeyInstanceIdentifier, await c.ReadAsStreamAsync(), filename );
+                        _crashService.RegisterCrash( civiKeyInstanceIdentifier, await c.ReadAsStreamAsync(), filename );
+                    }
+                    return HttpStatusCode.Created;
                 }
             }
             else
             {
                 _crashService.RegisterCrash( civiKeyInstanceIdentifier, await Request.Content.ReadAsStreamAsync() );
+                return HttpStatusCode.OK;
             }
 
             return HttpStatusCode.NoContent;

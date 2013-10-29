@@ -16,5 +16,10 @@ namespace CiviKey.WebApi.Tests
         {
             get { return _settings ?? (_settings = new ExpandoObject()); }
         }
+
+        public string GetRootPath()
+        {
+            return "../../TestOutput";
+        }
     }
 }
