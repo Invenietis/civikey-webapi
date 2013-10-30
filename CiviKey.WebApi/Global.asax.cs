@@ -8,6 +8,7 @@ using System.Web.Http.Dispatcher;
 using System.Web.Routing;
 using CiviKey.WebApi.Core.Configuration;
 using CiviKey.WebApi.Crash;
+using CiviKey.WebApi.Help;
 using CK.Mailer;
 using CK.TaskHost;
 using CK.TaskHost.Impl;
@@ -28,6 +29,8 @@ namespace CiviKey.WebApi
             container.RegisterType<IConfiguration, WebConfiguration>( new ContainerControlledLifetimeManager() );
 
             container.RegisterInstance<IMailerService>( new DefaultMailerService() );
+            container.RegisterInstance<HashProvider>( new HashProvider() );
+            container.RegisterType<HelpBuilderService>( new ContainerControlledLifetimeManager() );
 
             GlobalConfiguration.Configure( ( c ) => WebApiConfig.Register( c, container ) );
 
@@ -40,6 +43,13 @@ namespace CiviKey.WebApi
             CKHost.Start( new HostMultiFileRepository( tasksRepoDirectory.FullName ), taskFactory );
 
             CKHost.RegisterUniqueTask( typeof( CrashTask ), "Send mail report of new crash logs" );
+
+            this.Disposed += ( o, e ) =>
+            {
+                var builder = container.Resolve<HelpBuilderService>();
+                if( builder != null )
+                    builder.Dispose();
+            };
         }
     }
 }

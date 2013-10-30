@@ -176,6 +176,10 @@
       <Project>{3f1597b5-a281-4c7b-ae95-1bee8e343160}</Project>
       <Name>CiviKey.WebApi.Crash</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CiviKey.WebApi.Help\CiviKey.WebApi.Help.csproj">
+      <Project>{5cc1a83a-6bf4-4b6c-a883-e1ffa7e437d6}</Project>
+      <Name>CiviKey.WebApi.Help</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CiviKey.WebApi.Update\CiviKey.WebApi.Update.csproj">
       <Project>{16831881-7d0d-42f8-bbc6-42d6b1490885}</Project>
       <Name>CiviKey.WebApi.Update</Name>

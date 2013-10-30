@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiviKey.WebApi.Update", "Ci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiviKey.WebApi", "CiviKey.WebApi\CiviKey.WebApi.csproj", "{90CE8F14-CEEA-4F81-91E2-D705B7808956}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiviKey.WebApi.Help", "CiviKey.WebApi.Help\CiviKey.WebApi.Help.csproj", "{5CC1A83A-6BF4-4B6C-A883-E1FFA7E437D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{90CE8F14-CEEA-4F81-91E2-D705B7808956}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90CE8F14-CEEA-4F81-91E2-D705B7808956}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90CE8F14-CEEA-4F81-91E2-D705B7808956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC1A83A-6BF4-4B6C-A883-E1FFA7E437D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC1A83A-6BF4-4B6C-A883-E1FFA7E437D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC1A83A-6BF4-4B6C-A883-E1FFA7E437D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC1A83A-6BF4-4B6C-A883-E1FFA7E437D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
