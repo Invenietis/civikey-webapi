@@ -9,14 +9,12 @@ using Ionic.Zip;
 
 namespace CiviKey.WebApi.Help
 {
-    public class HelpBuilderService : IDisposable
+    public class HelpBuilderService
     {
         HashProvider _hashProvider;
 
         DirectoryInfo _sourceDirectory;
         DirectoryInfo _buildsDirectory;
-
-        FileSystemWatcher _watcher;
 
         public HelpBuilderService( IConfiguration configuration, HashProvider hashProvider )
         {
@@ -27,31 +25,12 @@ namespace CiviKey.WebApi.Help
 
             if( !_sourceDirectory.Exists ) _sourceDirectory.Create();
             if( !_buildsDirectory.Exists ) _buildsDirectory.Create();
-
-            _watcher = new FileSystemWatcher( _sourceDirectory.FullName );
-
-            _watcher.Changed += OnFSChanged;
-            _watcher.Created += OnFSChanged;
-            _watcher.Deleted += OnFSChanged;
-            _watcher.Renamed += OnFSChanged;
-
-            _watcher.IncludeSubdirectories = true;
-            _watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-
-            _watcher.EnableRaisingEvents = true;
         }
 
         public DirectoryInfo SourceDirectory { get { return _sourceDirectory; } }
         public DirectoryInfo BuildsDirectory { get { return _buildsDirectory; } }
-
-        void OnFSChanged( object sender, FileSystemEventArgs e )
-        {
-            // TODO
-            // find the level of the file changed
-            // find all impacted directories
-            // find the right(s) cultures to build
-            // BuildCulture( culturedDirectory )
-        }
+        public const string PackageFileName = "package.zip";
+        public const string HashFileFileName = "hash";
 
         /// <summary>
         /// Create all builds for the cultured helps in the source directory if they don't exists yet.
@@ -67,6 +46,18 @@ namespace CiviKey.WebApi.Help
                         DirectoryInfo buildDir = GetBuildDirectoryBySourceDirectory( cultureDir );
                         if( !buildDir.Exists || !buildDir.EnumerateFiles( "package.zip" ).Any() || !buildDir.EnumerateFiles( "hash" ).Any() )
                             BuildCulture( cultureDir );
+                        else
+                        {
+                            string hash = "0x" + BitConverter.ToString( _hashProvider.ComputeHash( cultureDir ) ).Replace( "-", string.Empty );
+                            string existingHash = string.Empty;
+                            using( TextReader rdr = File.OpenText( Path.Combine( buildDir.FullName, "hash" ) ) )
+                            {
+                                existingHash = rdr.ReadLine();
+                            }
+
+                            if( string.Compare( hash, existingHash ) != 0 )
+                                BuildCulture( cultureDir );
+                        }
                     }
                 }
             }
@@ -100,7 +91,7 @@ namespace CiviKey.WebApi.Help
         void CreateOrUpdateHashFile( DirectoryInfo sourceDirectory, DirectoryInfo buildDirectory )
         {
             byte[] hash = _hashProvider.ComputeHash( sourceDirectory );
-            using( FileStream hFile = File.Create( Path.Combine( buildDirectory.FullName, "hash" ) ) )
+            using( FileStream hFile = File.Create( Path.Combine( buildDirectory.FullName, HashFileFileName ) ) )
             using( StreamWriter sw = new StreamWriter( hFile ) )
             {
                 sw.WriteLine( "0x{0}", BitConverter.ToString( hash ).Replace( "-", string.Empty ) );
@@ -110,18 +101,23 @@ namespace CiviKey.WebApi.Help
         void CreateOrUpdateZipFile( DirectoryInfo sourceDirectory, DirectoryInfo buildDirectory )
         {
             ZipFile build = new ZipFile();
-            build.AddDirectory( sourceDirectory.FullName, "/" );
+            build.AddDirectory( sourceDirectory.FullName, "/content" );
+            build.AddEntry( "manifest.xml", GetManifest( buildDirectory ), Encoding.Unicode );
 
-            build.Save( Path.Combine( buildDirectory.FullName, "package.zip" ) );
+            build.Save( Path.Combine( buildDirectory.FullName, PackageFileName ) );
         }
 
-        public void Dispose()
+        string GetManifest( DirectoryInfo cultureDirectory )
         {
-            _watcher.Changed -= OnFSChanged;
-            _watcher.Created -= OnFSChanged;
-            _watcher.Deleted -= OnFSChanged;
-            _watcher.Renamed -= OnFSChanged;
-            _watcher.Dispose();
+            var manifest = new HelpManifestData { PluginId = cultureDirectory.Parent.Parent.Name, Version = cultureDirectory.Parent.Name, Culture = cultureDirectory.Name };
+            using( var fr = File.OpenText( Path.Combine( cultureDirectory.FullName, HelpBuilderService.HashFileFileName ) ) )
+                manifest.Hash = fr.ReadLine();
+
+            StringBuilder sb = new StringBuilder();
+            using( StringWriter w = new StringWriter( sb ) )
+                manifest.Serialize( w );
+
+            return sb.ToString();
         }
     }
 }

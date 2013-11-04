@@ -34,6 +34,10 @@
     <Reference Include="CK.Core">
       <HintPath>..\packages\CK.Core.2.8.14\lib\net45\CK.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.9000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ionic.Zip.Reduced.1.0.0\lib\net40\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -59,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelpServiceTests.cs" />
     <Compile Include="HelpBuilderTests.cs" />
     <Compile Include="HashProviderTests.cs" />
     <Compile Include="CrashTests.cs" />

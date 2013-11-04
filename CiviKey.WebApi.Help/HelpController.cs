@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,20 +13,48 @@ namespace CiviKey.WebApi.Help
     [RoutePrefix( "v2/help" )]
     public class HelpController : ApiController
     {
-        [Route( "{pluginId}/{version}/{culture}" )]
-        public void GetHelp( string pluginId, Version version, string culture )
+        HelpService _helpService;
+
+        public HelpController( HelpService helpService )
         {
-            // TODO 
-            // find the finest help in the builds
+            _helpService = helpService;
+        }
+
+        [Route( "{pluginId}/{version}/{culture}" )]
+        public HttpResponseMessage GetHelp( string pluginId, string version, string culture )
+        {
+            var res = new HttpResponseMessage();
+
+            Version parsedVersion = null;
+            if( Version.TryParse( version, out parsedVersion ) )
+            {
+                var content = _helpService.GetHelpPackage( pluginId, parsedVersion, culture );
+                if( content != null )
+                {
+                    res.StatusCode = System.Net.HttpStatusCode.OK;
+                    res.Content = new StreamContent( content );
+                    res.Content.Headers.ContentType = new MediaTypeHeaderValue( "application/zip" );
+                    return res;
+                }
+            }
+
+            res.StatusCode = System.Net.HttpStatusCode.NotFound;
+            return res;
         }
 
         [Route( "{pluginId}/{version}/{culture}/{hash}/isupdated" )]
-        public bool IsHelpUpdated( string pluginId, Version version, string culture, string hash )
+        public IHttpActionResult GetIsHelpUpdated( string pluginId, string version, string culture, string hash )
         {
-            // TODO
-            // check weither the given hash is different than the hash in the build directory
+            Version parsedVersion = null;
+            if( Version.TryParse( version, out parsedVersion ) )
+            {
+                var isUpdated = _helpService.IsHelpUpdated( pluginId, parsedVersion, culture, hash );
 
-            return false;
+                if( isUpdated.HasValue )
+                    return Ok( isUpdated.Value );
+            }
+
+            return NotFound();
         }
     }
 }

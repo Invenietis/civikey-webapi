@@ -31,6 +31,7 @@ namespace CiviKey.WebApi
             container.RegisterInstance<IMailerService>( new DefaultMailerService() );
             container.RegisterInstance<HashProvider>( new HashProvider() );
             container.RegisterType<HelpBuilderService>( new ContainerControlledLifetimeManager() );
+            container.RegisterType<HelpService>( new ContainerControlledLifetimeManager() );
 
             GlobalConfiguration.Configure( ( c ) => WebApiConfig.Register( c, container ) );
 
@@ -43,13 +44,7 @@ namespace CiviKey.WebApi
             CKHost.Start( new HostMultiFileRepository( tasksRepoDirectory.FullName ), taskFactory );
 
             CKHost.RegisterUniqueTask( typeof( CrashTask ), "Send mail report of new crash logs" );
-
-            this.Disposed += ( o, e ) =>
-            {
-                var builder = container.Resolve<HelpBuilderService>();
-                if( builder != null )
-                    builder.Dispose();
-            };
+            CKHost.RegisterUniqueTask( typeof( HelpBuilderTask ), "Rebuild help contents each hour" );
         }
     }
 }

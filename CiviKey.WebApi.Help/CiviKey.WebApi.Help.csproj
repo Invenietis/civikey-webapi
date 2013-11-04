@@ -30,11 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CK.Core">
+      <HintPath>..\packages\CK.Core.2.8.14\lib\net45\CK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CK.TaskHost">
+      <HintPath>..\packages\CK.TaskHost.1.5.1\lib\net40\CK.TaskHost.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip.Reduced">
       <HintPath>..\packages\Ionic.Zip.Reduced.1.0.0\lib\net40\Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,9 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelpBuilderTask.cs" />
     <Compile Include="HashProvider.cs" />
     <Compile Include="HelpController.cs" />
     <Compile Include="HelpBuilderService.cs" />
+    <Compile Include="HelpManifestData.cs" />
+    <Compile Include="HelpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -29,37 +29,36 @@ namespace CiviKey.WebApi.Tests
             IConfiguration config = new TestConfiguration();
             config.Settings.HelpDirectory = "Help";
 
-            using( HelpBuilderService buildService = new HelpBuilderService( config, hp ) )
-            {
-                DirectoryInfo frHelpDir = buildService.SourceDirectory.CreateSubdirectory( Path.Combine( Guid.NewGuid().ToString( "B" ), "1.0.0", "fr" ) );
-                frHelpDir.Create();
+            HelpBuilderService buildService = new HelpBuilderService( config, hp );
 
-                DirectoryInfo enHelpDir = frHelpDir.Parent.CreateSubdirectory( "en" );
-                enHelpDir.Create();
+            DirectoryInfo frHelpDir = buildService.SourceDirectory.CreateSubdirectory( Path.Combine( Guid.NewGuid().ToString( "B" ), "1.0.0", "fr" ) );
+            frHelpDir.Create();
 
-                File.Create( Path.Combine( frHelpDir.FullName, "helpContent.txt" ) ).Dispose();
-                File.Create( Path.Combine( enHelpDir.FullName, "helpContent.txt" ) ).Dispose();
+            DirectoryInfo enHelpDir = frHelpDir.Parent.CreateSubdirectory( "en" );
+            enHelpDir.Create();
 
-                // When
-                buildService.CreateOrUpdateBuilds();
+            File.Create( Path.Combine( frHelpDir.FullName, "helpContent.txt" ) ).Dispose();
+            File.Create( Path.Combine( enHelpDir.FullName, "helpContent.txt" ) ).Dispose();
 
-                // Then
-                DirectoryInfo pluginBuildDir = buildService.BuildsDirectory.EnumerateDirectories( frHelpDir.Parent.Parent.Name ).FirstOrDefault();
-                Assert.That( pluginBuildDir, Is.Not.Null );
+            // When
+            buildService.CreateOrUpdateBuilds();
 
-                DirectoryInfo versionBuildDir = pluginBuildDir.EnumerateDirectories( frHelpDir.Parent.Name ).FirstOrDefault();
-                Assert.That( versionBuildDir, Is.Not.Null );
+            // Then
+            DirectoryInfo pluginBuildDir = buildService.BuildsDirectory.EnumerateDirectories( frHelpDir.Parent.Parent.Name ).FirstOrDefault();
+            Assert.That( pluginBuildDir, Is.Not.Null );
 
-                DirectoryInfo frBuildDir = versionBuildDir.EnumerateDirectories( "fr" ).FirstOrDefault();
-                DirectoryInfo enBuildDir = versionBuildDir.EnumerateDirectories( "en" ).FirstOrDefault();
-                Assert.That( frBuildDir, Is.Not.Null );
-                Assert.That( enBuildDir, Is.Not.Null );
+            DirectoryInfo versionBuildDir = pluginBuildDir.EnumerateDirectories( frHelpDir.Parent.Name ).FirstOrDefault();
+            Assert.That( versionBuildDir, Is.Not.Null );
 
-                Assert.That( frBuildDir.EnumerateFiles().Any( f => f.Name == "hash" ) );
-                Assert.That( frBuildDir.EnumerateFiles().Any( f => f.Name == "package.zip" ) );
-                Assert.That( enBuildDir.EnumerateFiles().Any( f => f.Name == "hash" ) );
-                Assert.That( enBuildDir.EnumerateFiles().Any( f => f.Name == "package.zip" ) );
-            }
+            DirectoryInfo frBuildDir = versionBuildDir.EnumerateDirectories( "fr" ).FirstOrDefault();
+            DirectoryInfo enBuildDir = versionBuildDir.EnumerateDirectories( "en" ).FirstOrDefault();
+            Assert.That( frBuildDir, Is.Not.Null );
+            Assert.That( enBuildDir, Is.Not.Null );
+
+            Assert.That( frBuildDir.EnumerateFiles().Any( f => f.Name == "hash" ) );
+            Assert.That( frBuildDir.EnumerateFiles().Any( f => f.Name == "package.zip" ) );
+            Assert.That( enBuildDir.EnumerateFiles().Any( f => f.Name == "hash" ) );
+            Assert.That( enBuildDir.EnumerateFiles().Any( f => f.Name == "package.zip" ) );
         }
     }
 }
