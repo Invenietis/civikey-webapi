@@ -24,7 +24,7 @@ namespace CiviKey.WebApi.Help
         {
             var cultureDirectory = GetCultureDirectory( pluginId, version, culture );
             if( cultureDirectory != null )
-                return File.Open( Path.Combine( cultureDirectory.FullName, HelpBuilderService.PackageFileName ), FileMode.Open );
+                return new FileStream( Path.Combine( cultureDirectory.FullName, HelpBuilderService.PackageFileName ), FileMode.Open, FileAccess.Read );
 
             return null;
         }

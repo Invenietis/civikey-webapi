@@ -102,6 +102,7 @@ namespace CiviKey.WebApi.Help
         {
             ZipFile build = new ZipFile();
             build.AddDirectory( sourceDirectory.FullName, "/content" );
+            build.AddFile( Path.Combine( buildDirectory.FullName, HelpBuilderService.HashFileFileName ), "/content" );
             build.AddEntry( "manifest.xml", GetManifest( buildDirectory ), Encoding.Unicode );
 
             build.Save( Path.Combine( buildDirectory.FullName, PackageFileName ) );

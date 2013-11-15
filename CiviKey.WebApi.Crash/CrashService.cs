@@ -31,6 +31,8 @@ namespace CiviKey.WebApi.Crash
 
         public FileInfo RegisterCrash( string applicationId, Stream crashLogContent, string filename )
         {
+            filename = filename.Replace( "\"", string.Empty );
+
             string parsableDate = Regex.Replace( filename, "[a-z]|[A-Z]|-|\\.|\"", string.Empty );
             DateTime date = DateTime.ParseExact( parsableDate, "yyyyMMdd HHmmss", null );
 
