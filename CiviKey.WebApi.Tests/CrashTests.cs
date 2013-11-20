@@ -49,8 +49,8 @@ namespace CiviKey.WebApi.Tests
 
             Assert.That( crashFile, Is.Not.Null );
             Assert.That( crashFile.Exists, Is.True );
-            Assert.That( crashFile.Directory.Name, Is.EqualTo( "2009-01-01" ) );
-            Assert.That( crashFile.Directory.Parent.Name, Is.EqualTo( "unittests" ) );
+            Assert.That( crashFile.Directory.Name, Is.EqualTo( "unittests" ) );
+            Assert.That( crashFile.Directory.Parent.Name, Is.EqualTo( "2009-01-01" ) );
         }
     }
 }

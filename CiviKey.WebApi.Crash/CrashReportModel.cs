@@ -19,7 +19,7 @@ namespace CiviKey.WebApi.Crash
             : this( lastReport )
         {
             CrashLogs = crashLogs;
-            CountByApplication = CrashLogs.GroupBy( c => c.Directory.Parent.Name ).ToDictionary( g => g.Key, g => g.Count() );
+            CountByApplication = CrashLogs.GroupBy( c => c.Directory.Name ).ToDictionary( g => g.Key, g => g.Count() );
         }
 
         public void ConfigureMail( CrashReportModel model, MailParams mailParams )

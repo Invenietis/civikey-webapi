@@ -37,22 +37,22 @@ namespace CiviKey.WebApi.Crash
             DateTime date = DateTime.ParseExact( parsableDate, "yyyyMMdd HHmmss", null );
 
             DirectoryInfo crashLogDirectory = _crashDirectory
-                                                .CreateSubdirectory( applicationId )
-                                                .CreateSubdirectory( date.ToString( "yyyy-MM-dd" ) );
+                                                .CreateSubdirectory( date.ToString( "yyyy-MM-dd" ) )
+                                                .CreateSubdirectory( applicationId );
 
             return WriteStream( Path.Combine( crashLogDirectory.FullName, filename ), crashLogContent );
         }
 
         public IEnumerable<FileInfo> GetCrashsSince( DateTime date )
         {
-            foreach( var appCrashDir in _crashDirectory.EnumerateDirectories() )
+            foreach( var dateCrashDir in _crashDirectory.EnumerateDirectories() )
             {
-                foreach( var dateCrashDir in appCrashDir.EnumerateDirectories() )
+                DateTime crashDate = DateTime.ParseExact( dateCrashDir.Name, "yyyy-MM-dd", null );
+                if( crashDate > date )
                 {
-                    DateTime crashDate = DateTime.ParseExact( dateCrashDir.Name, "yyyy-MM-dd", null );
-                    if( crashDate > date)
+                    foreach( var appCrashDir in dateCrashDir.EnumerateDirectories() )
                     {
-                        foreach( var crash in dateCrashDir.EnumerateFiles() )
+                        foreach( var crash in appCrashDir.EnumerateFiles() )
                         {
                             yield return crash;
                         }

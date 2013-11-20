@@ -16,6 +16,8 @@ namespace CiviKey.WebApi.Help
     {
         HelpService _helpService;
 
+        static object _lock = new object();
+
         public HelpController( HelpService helpService )
         {
             _helpService = helpService;
