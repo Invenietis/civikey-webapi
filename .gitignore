@@ -27,8 +27,10 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
-packages/*
-CiviKey.WebApi.Web/packages/*
-Private/*
-CiviKey.WebApi.Tests/TestOutput/*
+src/packages/*
+src/CiviKey.WebApi.Web/packages/*
+src/Private/*
+src/CiviKey.WebApi.Tests/TestOutput/*
+TestOutput/*
+tools/*
 Build/CiviKey.WebApi.zip

@@ -11,7 +11,7 @@
         <Requirements />
         <Files>
           <FileGroupTarget Target="/Portal">
-            <Filter Root="CiviKey.WebApi">
+            <Filter Root="src/CiviKey.WebApi">
               <Include Name="/Global.asax" />
               <Include Name="/bin/*.dll" />
               <Include Name="**/Views/" />
