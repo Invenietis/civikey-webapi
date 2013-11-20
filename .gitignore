@@ -30,3 +30,5 @@ _ReSharper*/
 packages/*
 CiviKey.WebApi.Web/packages/*
 Private/*
+CiviKey.WebApi.Tests/TestOutput/*
+Build/CiviKey.WebApi.zip

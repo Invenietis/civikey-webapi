@@ -1,0 +1,24 @@
+﻿@model CiviKey.WebApi.Crash.CrashReportModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CrashReport</title>
+</head>
+<body>
+    <div>
+        <p>Hi !</p>
+        <p>Since the @Model.LastReportDate.ToShortDateString() the server have received @Model.CrashLogs.Count() new crash log(s) that you should care about.</p>
+        <p>Summary :</p>
+        <div>
+            <ul>
+                @foreach( var c in Model.CountByApplication )
+                {
+                    <li>Application <b>@c.Key</b>: @c.Value report(s) received.</li>
+                }
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
