@@ -32,5 +32,4 @@ src/CiviKey.WebApi.Web/packages/*
 src/Private/*
 src/CiviKey.WebApi.Tests/TestOutput/*
 TestOutput/*
-tools/*
 Build/CiviKey.WebApi.zip
