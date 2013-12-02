@@ -8,23 +8,34 @@ Include .\tools\custom-tasks\PackageTasks.ps1
 
 properties {
     $solution = @{}
+    # The directory that contains the solution (where we can find the .sln file).
     $solution.Directory = "src"
-    $solution.FileName = "CiviKey.WebApi"
+    # The solution file name.
+    $solution.FileName = "CiviKey.WebApi" 
+    # The shared assembly info file.
     $solution.SharedAssemblyInfoFile = Get-Item (Join-Path $solution.Directory -ChildPath "SharedAssemblyInfo.cs")
+    # All tests projects found by Get-Children and a filter.
     $solution.TestProjects = Get-ChildItem -Path $solution.Directory -File -Filter "*.Tests.csproj" -Recurse
+    # The format used to locate the dlls to process for the tests.
     $solution.TestDllsFormat = "*.Tests.dll"
-    $solution.TestFramework = "net-4.0"
-
+    # The framework used to run the unit tests.
+    $solution.TestFramework = "net-4.0" 
+    
     $output = @{}
+    # The directory where the tests are going to be build.
     $output.TestsDirectory = ".\output\tests"
-    $output.PackageDirectory = ".\output\package"
 
     $packages = @{}
+    # The directory used by nuget to output the restored packages.
     $packages.PackagesDirectory = Join-Path $solution.Directory "packages"
+    # All packages.config file of the solution. 
+    # Used by nuget to restore the missing packages in order to build the solution.
     $packages.ConfigFiles = Get-ChildItem -Path $solution.Directory -Filter "packages.config" -Recurse
 
     $ckpackage = @{}
+    # The solution directory where the CKPackage cmdlet can find a Solution.ck file.
     $ckpackage.SolutionDirectory = ".\"
+    # The directory where the CKPackage cmdlet can output the produced package.
     $ckpackage.OutputDirectory = ".\output\package"
 }
 

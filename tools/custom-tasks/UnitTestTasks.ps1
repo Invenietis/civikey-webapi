@@ -1,4 +1,13 @@
-﻿task Download-NUnitConsole {
+﻿function Get-NUnitConsole {
+    $nc = Get-ChildItem -Path .\ -File -Filter nunit-console.exe -Recurse
+    if( $nc -ne $null ) {
+        $nc = $nc[0]
+    }
+
+    return $nc
+}
+
+task Download-NUnitConsole -precondition { return (Get-NUnitConsole) -eq $null } {
     $packagesDir = $output.TestsDirectory
     exec { nuget install NUnit.Runners -OutputDirectory $packagesDir }
 }
@@ -13,9 +22,10 @@ task Build-UnitTests {
 }
 
 task Run-NUnitTests {
-    $nunitConsole = Get-ChildItem -Path $output.TestsDirectory -File -Filter nunit-console.exe -Recurse
+    $nunitConsole = Get-NUnitConsole
     $dlls = (Get-ChildItem -Path $output.TestsDirectory -File $solution.TestDllsFormat).FullName
     $testFramework = $solution.TestFramework
+    $workingDirectory = $output.TestsDirectory
 
-    exec { & $nunitConsole.FullName $dlls /framework:$testFramework }
+    exec { & $nunitConsole.FullName /work:$workingDirectory /framework:$testFramework $dlls }
 }

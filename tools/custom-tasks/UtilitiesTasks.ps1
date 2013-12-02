@@ -15,12 +15,12 @@ task Initialize-Directories {
     if( Test-Path $output.TestsDirectory ) {
         Remove-Item -Path $output.TestsDirectory -Force -Recurse
     }
-    if( Test-Path $output.PackageDirectory ) {
-        Remove-Item -Path $output.PackageDirectory -Force -Recurse
+    if( Test-Path $ckpackage.OutputDirectory ) {
+        Remove-Item -Path $ckpackage.OutputDirectory -Force -Recurse
     }
     
     $output.TestsDirectory = (New-Item -Force -ItemType Directory $output.TestsDirectory).FullName
-    $output.PackageDirectory = (New-Item -Force -ItemType Directory $output.PackageDirectory).FullName
+    $ckpackage.OutputDirectory = (New-Item -Force -ItemType Directory $ckpackage.OutputDirectory).FullName
 }
 
 task NugetRestore {

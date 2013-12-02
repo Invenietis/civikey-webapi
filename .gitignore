@@ -34,3 +34,4 @@ src/CiviKey.WebApi.Tests/TestOutput/*
 TestOutput/*
 Build/CiviKey.WebApi.zip
 output/*
+tools/custom-modules/CK-Package/*
