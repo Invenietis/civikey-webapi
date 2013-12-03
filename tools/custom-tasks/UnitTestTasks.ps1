@@ -8,24 +8,29 @@
 }
 
 task Download-NUnitConsole -precondition { return (Get-NUnitConsole) -eq $null } {
-    $packagesDir = $output.TestsDirectory
-    exec { nuget install NUnit.Runners -OutputDirectory $packagesDir }
+    $nunitConsoleDir = $packages.PackagesDirectory
+    exec { nuget install NUnit.Runners -OutputDirectory $nunitConsoleDir }
 }
 
 task Build-UnitTests {
   exec {
       $solution.TestProjects | % {
-        $td = $output.TestsDirectory
-        msbuild $_.FullName /nologo /p:Configuration=Debug /p:DownloadNuGetExe=false /p:RestorePackages=false /p:CKPackage=false /p:OutputPath=$td
+        msbuild $_.FullName /nologo /p:Configuration=Debug /p:DownloadNuGetExe=false /p:RestorePackages=false /p:MvcBuildViews=false /p:CKPackage=false
       }
   }
 }
 
 task Run-NUnitTests {
     $nunitConsole = Get-NUnitConsole
-    $dlls = (Get-ChildItem -Path $output.TestsDirectory -File $solution.TestDllsFormat).FullName
-    $testFramework = $solution.TestFramework
-    $workingDirectory = $output.TestsDirectory
 
-    exec { & $nunitConsole.FullName /work:$workingDirectory /framework:$testFramework $dlls }
+    $dlls = $solution.TestProjects | % { 
+        $path = Join-Path $_.Directory.FullName -ChildPath (join-path bin Debug) 
+        $dllName = "{0}.dll" -f $_.Name.Substring(0, $_.Name.Length-$_.Extension.Length)
+        return (Get-ChildItem -Path $path -File $dllName).FullName 
+    }
+
+    $testFramework = $solution.TestFramework
+    $resultFile = join-path $outputDirectory TestResults.xml
+
+    exec { & $nunitConsole.FullName /result:$resultFile /framework:$testFramework $dlls }
 }

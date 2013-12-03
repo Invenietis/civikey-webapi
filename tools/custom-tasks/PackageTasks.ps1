@@ -3,5 +3,5 @@
 }
 
 task CKPackage -depends Initialize-Directories {
-    exec { Invoke-CKPackage -SolutionDirectory (get-item $ckpackage.SolutionDirectory) -OutputDirectory (get-item $ckpackage.OutputDirectory) }
+    Invoke-CKPackage -SolutionDirectory (get-item $ckpackage.SolutionDirectory) -OutputDirectory (get-item $outputDirectory)
 }

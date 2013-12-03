@@ -12,15 +12,11 @@ function Get-CurrentVersion() {
 }
 
 task Initialize-Directories { 
-    if( Test-Path $output.TestsDirectory ) {
-        Remove-Item -Path $output.TestsDirectory -Force -Recurse
-    }
-    if( Test-Path $ckpackage.OutputDirectory ) {
-        Remove-Item -Path $ckpackage.OutputDirectory -Force -Recurse
+    if( Test-Path $outputDirectory ) {
+        Remove-Item -Path $outputDirectory -Force -Recurse
     }
     
-    $output.TestsDirectory = (New-Item -Force -ItemType Directory $output.TestsDirectory).FullName
-    $ckpackage.OutputDirectory = (New-Item -Force -ItemType Directory $ckpackage.OutputDirectory).FullName
+    $script:outputDirectory = (New-Item -Force -ItemType Directory $outputDirectory).FullName
 }
 
 task NugetRestore {

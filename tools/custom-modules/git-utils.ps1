@@ -23,13 +23,16 @@ function Get-GitCurrentFileInChangeCount([bool]$countAllChanges) {
 function Get-GitCurrentCommitCountAheadOfOrigin(){
     $currentBranch = Get-GitCurrentBranchName
     $remoteName = & git config --get branch.$currentBranch.remote
-    $refName = & git config --get branch.$currentBranch.merge
+    if( $remoteName -ne $null ) {
+        $refName = & git config --get branch.$currentBranch.merge
 
-    $remoteRefParts = $refName.Split('/')
+        $remoteRefParts = $refName.Split('/')
 
-    $remoteRefName = "{0}/{1}" -f $remoteName, $remoteRefParts[$remoteRefParts.Length-1]
+        $remoteRefName = "{0}/{1}" -f $remoteName, $remoteRefParts[$remoteRefParts.Length-1]
 
-    return ((& git rev-list ("{0}..{1}" -f $remoteRefName, $currentBranch)) | measure).Count
+        return ((& git rev-list ("{0}..{1}" -f $remoteRefName, $currentBranch)) | measure).Count
+    }
+    return 0
 }
 
 function Get-GitInformationsToPlant() {
