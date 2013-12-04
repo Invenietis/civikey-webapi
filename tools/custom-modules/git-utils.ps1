@@ -18,6 +18,10 @@ function Get-GitCurrentFileInChangeCount([bool]$countAllChanges) {
         & git status --porcelain | % { $count++ }
     }
 
+    if( $count -gt 0) {
+        $count--
+    }
+
     return $count
 }
 function Get-GitCurrentCommitCountAheadOfOrigin(){

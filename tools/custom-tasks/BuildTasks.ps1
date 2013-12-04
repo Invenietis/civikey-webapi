@@ -1,7 +1,23 @@
-﻿task Build-Solution-Debug {
-  exec { msbuild (Get-SolutionPath) /nologo /p:Configuration=Debug /p:DownloadNuGetExe=false /p:RestorePackages=false /p:MvcBuildViews=false /p:CKPackage=false }
+﻿Import-Module .\tools\custom-modules\SharedAssemblyInfoEditor.ps1
+
+task Build-Solution-Debug {
+    Update-SharedAssemblyInfo
+    
+    try {
+        exec { msbuild (Get-SolutionPath) /nologo /p:Configuration=Debug /p:DownloadNuGetExe=false /p:RestorePackages=false /p:MvcBuildViews=false /p:CKPackage=false }
+    }
+    finally {
+        Reset-SharedAssemblyInfo
+    }
 }
 
 task Build-Solution-Release {
-  exec { msbuild (Get-SolutionPath) /nologo /p:Configuration=Release /p:DownloadNuGetExe=false /p:RestorePackages=false /p:MvcBuildViews=true /p:CKPackage=false }
+    Update-SharedAssemblyInfo
+
+    try {
+        exec { msbuild (Get-SolutionPath) /nologo /p:Configuration=Release /p:DownloadNuGetExe=false /p:RestorePackages=false /p:MvcBuildViews=true /p:CKPackage=false }
+    }
+    finally {
+        Reset-SharedAssemblyInfo
+    }
 }

@@ -1,6 +1,5 @@
 framework "4.0"
 
-Include .\tools\custom-tasks\SharedAssemblyInfoTasks.ps1
 Include .\tools\custom-tasks\UtilitiesTasks.ps1
 Include .\tools\custom-tasks\BuildTasks.ps1
 Include .\tools\custom-tasks\UnitTestTasks.ps1
@@ -18,8 +17,6 @@ properties {
     $solution.TestProjects = Get-ChildItem -Path $solution.Directory -File -Filter "*.Tests.csproj" -Recurse
     # The framework used to run the unit tests.
     $solution.TestFramework = "net-4.0" 
-    
-    $outputDirectory = ".\output"
 
     $packages = @{}
     # The directory used by nuget to output the restored packages.
@@ -31,9 +28,11 @@ properties {
     $ckpackage = @{}
     # The solution directory where the CKPackage cmdlet can find a Solution.ck file.
     $ckpackage.SolutionDirectory = ".\"
+    
+    $outputDirectory = ".\output"
 }
 
-task Build -depends Initialize-Directories, NugetRestore, Update-SharedAssemblyInfo, Build-Solution-Debug, Build-Solution-Release, Reset-SharedAssemblyInfo
+task Build -depends Initialize-Directories, NugetRestore, Build-Solution-Debug, Build-Solution-Release
 
 task UnitTest -depends Initialize-Directories, Download-NUnitConsole, NugetRestore, Build-UnitTests, Run-NUnitTests
 
