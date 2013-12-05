@@ -8,6 +8,7 @@
 }
 
 task Download-NUnitConsole -precondition { return (Get-NUnitConsole) -eq $null } {
+    Ensure-Nuget
     $nunitConsoleDir = $packages.PackagesDirectory
     exec { nuget install NUnit.Runners -OutputDirectory $nunitConsoleDir }
 }
@@ -32,5 +33,5 @@ task Run-NUnitTests {
     $testFramework = $solution.TestFramework
     $resultFile = join-path $outputDirectory TestResults.xml
 
-    exec { & $nunitConsole.FullName /result:$resultFile /framework:$testFramework $dlls }
+    exec { & $nunitConsole.FullName /nologo /result:$resultFile /framework:$testFramework $dlls }
 }

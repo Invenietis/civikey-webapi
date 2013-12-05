@@ -1,5 +1,20 @@
-﻿function Get-SolutionPath {
-    return (Get-Item (Join-Path $solution.Directory ("{0}.sln" -f $solution.FileName))).FullName
+﻿function Ensure-Nuget {
+    try {
+        (& nuget) | Out-Null
+    }
+    catch {
+        $nugetFile = Get-ChildItem -File -Filter nuget.exe -Recurse
+        if( $nugetFile -ne $null ) {
+            $env:Path = $nugetFile.Directory.FullName + ";$env:Path"
+        }
+        else {
+            throw "Unable to locate nuget"
+        }
+    }
+}
+
+function Get-SolutionPath {
+    return (Get-Item (Join-Path $solution.Directory $solution.FileName)).FullName
 }
 
 function Get-CurrentVersion() {
@@ -20,10 +35,9 @@ task Initialize-Directories {
 }
 
 task NugetRestore {
+    Ensure-Nuget
     exec { 
-        $packages.configFiles | % {
-            $packagesDir = $packages.PackagesDirectory
-            nuget restore $_.FullName -PackagesDirectory $packagesDir
-        }
+        $solutionPath = Get-SolutionPath
+        nuget restore $solutionPath
     }
 }

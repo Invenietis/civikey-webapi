@@ -10,7 +10,7 @@ properties {
     # The directory that contains the solution (where we can find the .sln file).
     $solution.Directory = ".\src"
     # The solution file name.
-    $solution.FileName = "CiviKey.WebApi" 
+    $solution.FileName = "CiviKey.WebApi.sln" 
     # The shared assembly info file.
     $solution.SharedAssemblyInfoFile = Get-Item (Join-Path $solution.Directory -ChildPath "SharedAssemblyInfo.cs")
     # All tests projects found by Get-Children and a filter.
